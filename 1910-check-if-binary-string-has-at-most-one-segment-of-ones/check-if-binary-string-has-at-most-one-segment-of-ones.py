@@ -3,8 +3,7 @@ class Solution:
         
         count = 0 
         n = len(s)
-        i = 0
-
+        i = 0 
         while i < n:
 
             if s[i] == '1':
