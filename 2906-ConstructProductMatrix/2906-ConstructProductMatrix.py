@@ -1,21 +1,21 @@
-# Last updated: 4/2/2026, 3:10:55 PM
-1
-2class Solution:
-3    def constructProductMatrix(self, grid):
-4        MOD = 12345
-5        n, m = len(grid), len(grid[0])
-6        p = [[0]*m for _ in range(n)]
-7
-8        suffix = 1
-9        for i in range(n-1, -1, -1):
-10            for j in range(m-1, -1, -1):
-11                p[i][j] = suffix
-12                suffix = (suffix * (grid[i][j] % MOD)) % MOD
-13
-14        prefix = 1
-15        for i in range(n):
-16            for j in range(m):
-17                p[i][j] = (p[i][j] * prefix) % MOD
-18                prefix = (prefix * (grid[i][j] % MOD)) % MOD
-19
-20        return p
+# Last updated: 4/2/2026, 3:12:03 PM
+1class Solution:
+2    def maxProductPath(self, grid: List[List[int]]) -> int:
+3        r, c, MOD=len(grid), len(grid[0]), 10**9+7
+4        dp=[[[0]*2 for _ in range(c)] for _ in range(r)]
+5
+6        p=dp[0][0][0]=dp[0][0][1]=grid[0][0]
+7        for j in range(1, c):
+8            p*=grid[0][j]
+9            dp[0][j][0]=dp[0][j][1]=p
+10
+11        p=grid[0][0]
+12        for i in range(1, r):
+13            p*=grid[i][0]
+14            dp[i][0][0]=dp[i][0][1]=p
+15            for j in range(1, c):
+16                x=grid[i][j]
+17                xx=(x*dp[i][j-1][0], x*dp[i][j-1][1], x*dp[i-1][j][0], x*dp[i-1][j][1])
+18                dp[i][j][0], dp[i][j][1]=min(xx), max(xx)
+19        ans=dp[r-1][c-1][1]
+20        return -1 if ans<0 else ans%MOD
