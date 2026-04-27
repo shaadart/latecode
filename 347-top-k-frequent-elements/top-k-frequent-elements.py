@@ -13,7 +13,7 @@ class Solution:
             else: 
                 groups[i] = 1
 
-        print(groups)
+        
         #extract k times highest oness
         while k != 0:
             highest_key = max(groups, key=groups.get) #1
