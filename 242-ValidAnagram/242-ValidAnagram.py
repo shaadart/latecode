@@ -1,30 +1,26 @@
-# Last updated: 4/27/2026, 12:17:39 PM
+# Last updated: 4/27/2026, 12:49:58 PM
 1class Solution:
-2    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-3
-4        out = []
-5        sortedstrs = strs[:]
-6
-7        #sort
-8        for i in range(len(strs)):
-9            sortedstrs[i] = "".join(sorted(strs[i]))
-10
-11        
-12        # for i in range(len(sortedstrs)):
-13        #     for j in range():
-14        #     if sortedstrs[i] == sortedstrs[i-1]:
-15        
-16        groups = defaultdict(list)
-17
-18        for i in range(len(strs)):
-19            groups[sortedstrs[i]].append(strs[i])
-20
-21
-22        for key in groups:
-23            out.append(groups[key])
-24
-25        return out
-26
-27                
-28
-29        
+2    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+3        #sort
+4        nums.sort()
+5        out = []
+6        
+7        #count and store 
+8        groups = {}
+9
+10        for i in nums:
+11            if i in groups:  
+12                groups[i] = groups.get(i) + 1
+13            else: 
+14                groups[i] = 1
+15
+16        print(groups)
+17        #extract k times highest oness
+18        while k != 0:
+19            highest_key = max(groups, key=groups.get) #1
+20            out.append(highest_key)
+21            groups.pop(highest_key,None)      
+22            k-=1
+23
+24        return out
+25
