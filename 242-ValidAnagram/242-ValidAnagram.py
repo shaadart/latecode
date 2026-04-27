@@ -1,4 +1,4 @@
-# Last updated: 4/27/2026, 12:49:58 PM
+# Last updated: 4/27/2026, 12:50:16 PM
 1class Solution:
 2    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
 3        #sort
@@ -14,7 +14,7 @@
 13            else: 
 14                groups[i] = 1
 15
-16        print(groups)
+16        
 17        #extract k times highest oness
 18        while k != 0:
 19            highest_key = max(groups, key=groups.get) #1
