@@ -1,5 +1,5 @@
-# Last updated: 4/27/2026, 8:16:49 PM
-1from typing import List
+# Last updated: 4/27/2026, 8:34:21 PM
+1
 2
 3class Solution:
 4    def longestConsecutive(self, nums: List[int]) -> int:
