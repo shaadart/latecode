@@ -1,5 +1,6 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
+        #this is a two pointer shit, not sliding window
         r,maxP = 1,0
       
 
