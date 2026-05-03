@@ -1,27 +1,20 @@
-# Last updated: 5/2/2026, 10:02:48 PM
+# Last updated: 5/3/2026, 11:49:18 AM
 1class Solution:
-2    def moveZeroes(self, nums: List[int]) -> None:
-3        """
-4        Do not return anything, modify nums in-place instead.
-5        """
-6        n=len(nums)
-7        countzero = 0
-8        temp = []
-9        for i in range(n):
-10            if nums[i] == 0:
-11                countzero += 1
-12
-13            else: 
-14                temp.append(nums[i])
+2    def maxProduct(self, nums: List[int]) -> int:
+3        minprod = nums[0]
+4        maxprod = nums[0]
+5        result = nums[0]
+6
+7        for i in range(1, len(nums)):
+8            if nums[i] < 0: 
+9                maxprod, minprod = minprod, maxprod
+10
+11            maxprod = max(nums[i] , maxprod * nums[i])
+12            minprod = min(nums[i] , minprod * nums[i])
+13
+14
 15
-16        for j in range(countzero):
-17            temp.append(0)
+16            result = max(maxprod, result)
+17        return result
 18
-19        nums[:] = temp
-20
-21            
-22        
-23
-24            
-25
-26
+19        
