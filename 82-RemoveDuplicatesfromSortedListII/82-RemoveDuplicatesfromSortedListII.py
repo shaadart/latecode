@@ -1,46 +1,13 @@
-# Last updated: 5/7/2026, 2:29:19 PM
-1# Definition for singly-linked list.
-2# class ListNode:
-3#     def __init__(self, x):
-4#         self.val = x
-5#         self.next = None
-6
-7class Solution:
-8    def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> Optional[ListNode]:
-9        def getlen(h):
-10            curr = h
-11            count = 0
-12            while curr:
-13                count+=1
-14                curr=curr.next
-15
-16            return count
-17
-18        lenA = getlen(headA)
-19        lenB = getlen(headB)
-20
-21        
-22        #match
-23        currB,currA = headB,headA
-24        while max(lenA, lenB)!= min(lenA,lenB):
-25            if lenB > lenA:
-26                currB = currB.next
-27                lenB-=1
-28
-29            else:
-30                currA = currA.next
-31                lenA-=1
-32
-33        
-34        #check
-35        while currA:
-36            if currA == currB:
-37                return currA
-38
-39            currA= currA.next
-40            currB= currB.next
-41
-42            
-43                
-44
-45        
+# Last updated: 5/7/2026, 9:02:54 PM
+1class Solution:
+2    def findDuplicate(self, nums: List[int]) -> int:
+3
+4        #store in dick
+5        freq = {}
+6        n = len(nums)
+7        for i in range(n):
+8            # if freq[nums[i]].get()
+9             freq[nums[i]] = freq.get(nums[i], 0) + 1
+10
+11        return max(freq, key=freq.get)
+12        
