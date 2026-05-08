@@ -1,9 +1,25 @@
-# Last updated: 5/7/2026, 11:15:13 PM
-1class Solution:
-2    def replaceDigits(self, s: str) -> str:
-3        s = list(s)
-4        for i in range(1, len(s), 2):
-5            s[i] = chr(ord(s[i-1])+ int(s[i])) #i-1 is because we are checking "a" i.e before number
-6
-7        return "".join(s)
-8        
+# Last updated: 5/8/2026, 6:48:12 AM
+1# Definition for a binary tree node.
+2# class TreeNode:
+3#     def __init__(self, val=0, left=None, right=None):
+4#         self.val = val
+5#         self.left = left
+6#         self.right = right
+7class Solution:
+8    def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+9
+10        ans=[]
+11        def preorder(root):
+12            if root is None:
+13                return
+14
+15            ans.append(root.val)
+16            preorder(root.left)
+17            preorder(root.right)
+18            
+19
+20        preorder(root)
+21        return ans
+22
+23
+24        
