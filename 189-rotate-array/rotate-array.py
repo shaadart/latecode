@@ -4,8 +4,8 @@ class Solution:
 
         n = len(nums)
         k %= n 
-        l = nums[:n-k]
-        r = nums[n-k:]
-        nums[:] = r+l
+        r = nums[:n-k]
+        l = nums[n-k:]
+        nums[:] = l+r
             
         
