@@ -1,38 +1,20 @@
-# Last updated: 6/14/2026, 10:07:24 AM
+# Last updated: 05/08/2026, 12:08:57
 1class Solution:
 2    def isValid(self, s: str) -> bool:
 3        #defination
 4        stack = []
-5        rev_bracket_map = {")": "(", "}": "{", "]": "["}
+5        bracketmap = {")": "(", "}": "{", "]": "["}
 6
-7
-8        spl = list(s)
-9
+7        for ch in s:
+8            if ch in "([{":
+9                stack.append(ch)
 10
-11        for i in spl:
-12            #opening: push
-13
-14            if i in ["(", "[", "{"]:
-15                stack.append(i)
-16
-17            #closing:
+11            else:
+12                if not stack:
+13                    return False
+14
+15                if stack.pop() != bracketmap[ch]:
+16                    return False
+17
 18
-19            elif i in [")", "]", "}"]:
-20                if not stack:
-21                    return False
-22
-23                else: 
-24                    if stack[-1] == rev_bracket_map[i]:
-25                        stack.pop()
-26                    else:
-27                        return False
-28
-29        return len(stack) == 0
-30
-31
-32
-33
-34
-35        
-36        
-37
+19        return len(stack) == 0
