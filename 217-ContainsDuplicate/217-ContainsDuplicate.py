@@ -1,11 +1,16 @@
-# Last updated: 4/27/2026, 11:12:15 AM
+# Last updated: 16/08/2026, 13:04:27
 1class Solution:
 2    def containsDuplicate(self, nums: List[int]) -> bool:
-3        hashset = set()
-4        for n in nums:
-5            if n in hashset:
-6                return True
-7
-8            hashset.add(n)
-9
-10        return False
+3
+4        seen = set()
+5
+6        for num in nums:
+7            seen.add(num)
+8
+9        k = sorted(seen)
+10
+11        if len(k) == len(nums):
+12            return False
+13
+14        return True
+15        
