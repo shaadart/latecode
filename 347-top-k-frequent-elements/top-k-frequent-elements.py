@@ -1,9 +1,8 @@
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
         #sort
-        nums.sort()
-        out = []
         
+        out = []
         #count and store 
         groups = {}
 
@@ -13,10 +12,13 @@ class Solution:
             else: 
                 groups[i] = 1
 
+        print(groups)
+
         
         #extract k times highest oness
         while k != 0:
             highest_key = max(groups, key=groups.get) #1
+
             out.append(highest_key)
             groups.pop(highest_key,None)      
             k-=1
