@@ -1,45 +1,16 @@
 class Solution:
     def diagonalSum(self, mat: List[List[int]]) -> int:
         n = len(mat)
-        out = []
+        total=0
 
-        if n % 2 == 0:
-            for i in range(n):
+        for i in range(n):
+            total += mat[i][i]
 
-                for j in range(n):
+            total += mat[i][n-1-i]
 
-                    if i == j:
-                        out.append(mat[i][j])
-
-            r, c = 0, n - 1
-            while c >= 0 and r < n:
-                out.append(mat[r][c])
-
-                r += 1
-                c -= 1
-
-        else:
-            for i in range(n):
-
-                for j in range(n):
-
-                    if i == j:
-                        out.append(mat[i][j])
-
-            r, c = 0, n - 1
-
-            while c >= 0 and r < n:
-                if r == c:
-                    r += 1
-                    c -= 1
-                    continue  
-
-                out.append(mat[r][c])
-                
-                r += 1
-                c -= 1
+        if n%2!=0:
+            mid = n // 2
+            total-= mat[mid][mid]
 
 
-            
-
-        return sum(out)
+        return total
