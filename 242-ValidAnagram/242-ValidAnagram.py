@@ -1,26 +1,17 @@
-# Last updated: 4/27/2026, 12:50:16 PM
+# Last updated: 21/08/2026, 07:45:57
 1class Solution:
-2    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-3        #sort
-4        nums.sort()
-5        out = []
-6        
-7        #count and store 
-8        groups = {}
-9
-10        for i in nums:
-11            if i in groups:  
-12                groups[i] = groups.get(i) + 1
-13            else: 
-14                groups[i] = 1
+2    def isAnagram(self, s: str, t: str) -> bool:
+3        seeni = {}
+4        seenj = {}
+5
+6        for i in s: 
+7            seeni[i] = seeni.get(i, 0)+1
+8
+9        for j in t: 
+10            seenj[j] = seenj.get(j, 0)+1
+11
+12        return seenj == seeni
+13
+14        
 15
 16        
-17        #extract k times highest oness
-18        while k != 0:
-19            highest_key = max(groups, key=groups.get) #1
-20            out.append(highest_key)
-21            groups.pop(highest_key,None)      
-22            k-=1
-23
-24        return out
-25
