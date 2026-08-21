@@ -1,17 +1,16 @@
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
-        freqs = {}
-        freqt= {}
+        seeni = {}
+        seenj = {}
 
-        for i in range(len(s)):
-            # print(freqs[s[i]])
-            # print(freqs[s[i]])
-            freqs[s[i]] = freqs.get(s[i], 0) + 1
+        for i in s: 
+            seeni[i] = seeni.get(i, 0)+1
 
-        for i in range(len(t)):
-            freqt[t[i]] = freqt.get(t[i], 0) + 1
-            
-        return freqs == freqt
+        for j in t: 
+            seenj[j] = seenj.get(j, 0)+1
 
+        return seenj == seeni
+
+        
 
         
