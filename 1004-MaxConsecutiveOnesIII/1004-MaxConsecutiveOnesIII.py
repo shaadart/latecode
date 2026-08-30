@@ -1,4 +1,4 @@
-# Last updated: 07/08/2026, 10:30:04
+# Last updated: 30/08/2026, 15:39:53
 1class Solution:
 2    def longestOnes(self, nums: List[int], k: int) -> int:
 3        zeros, longest, left = 0,0,0
