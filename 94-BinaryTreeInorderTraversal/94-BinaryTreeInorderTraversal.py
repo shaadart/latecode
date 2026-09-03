@@ -1,15 +1,21 @@
-# Last updated: 03/09/2026, 16:03:50
-1class Solution:
-2    def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
-3        res = []
-4        
-5        def dfs(node):
-6            if not node:
-7                return
-8            res.append(node.val)  
-9            dfs(node.left)        
-10            dfs(node.right) 
-11            
-12        dfs(root)
-13        return res
-14
+# Last updated: 03/09/2026, 16:08:36
+1# Definition for a binary tree node.
+2# class TreeNode:
+3#     def __init__(self, val=0, left=None, right=None):
+4#         self.val = val
+5#         self.left = left
+6#         self.right = right
+7class Solution:
+8    def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+9        res = []
+10        def inorder(root):
+11            if not root:
+12                return 
+13            
+14            inorder(root.left)
+15            res.append(root.val)
+16            inorder(root.right)
+17
+18        inorder(root)
+19        return res
+20        
