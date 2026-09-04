@@ -1,19 +1,19 @@
-# Last updated: 3/27/2026, 2:40:04 PM
+# Last updated: 04/09/2026, 14:41:30
 1
 2class Solution:
 3    def isSymmetric(self, root: Optional[TreeNode]) -> bool:
-4        def isMirror(t1, t2):
-5            if not t1 and not t2: 
+4        def ismirror(a,b):
+5            if not a and not b:
 6                return True
-7            if not t1 or not t2:
-8                return False
-9
-10            return(t1.val == t2.val and 
-11            isMirror(t1.left, t2.right) and 
-12            isMirror(t1.right, t2.left) 
-13            )
-14
-15        return isMirror(root.left, root.right)
-16
+7            
+8            if not a or not b: 
+9                return False
+10
+11            if a.val != b.val:
+12                return False
+13
+14            return (ismirror(a.left, b.right) and ismirror(a.right, b.left))
+15
+16        return ismirror(root.left, root.right)
 17
 18        
