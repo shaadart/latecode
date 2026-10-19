@@ -1,0 +1,33 @@
+# Last updated: 19/10/2026, 16:21:50
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def deleteMiddle(self, head: ListNode | None) -> ListNode | None:
+        if head is None or head.next is None:
+            return None
+
+
+        fast, slow = head, head
+        prev = None
+        count = 0
+        while fast is not None and fast.next is not None:
+            prev = slow
+            slow = slow.next
+            fast = fast.next.next
+            
+       
+        prev.next=slow.next
+
+        return head
+
+
+
+        
+            
+
+        
+
+        
