@@ -1,18 +1,22 @@
-# Last updated: 05/08/2026, 12:39:26
+# Last updated: 14/11/2026, 12:27:57
 1class Solution:
-2    def merge(self, intervals: List[List[int]]) -> List[List[int]]:
-3        intervals.sort()
-4
-5        answer = [intervals[0]]
-6
-7        for current in intervals[1:]:
-8
-9            previous = answer[-1]
-10
-11            if current[0] <= previous[1]:
-12                previous[1] = max(previous[1], current[1])
-13
-14            else:
-15                answer.append(current)
-16
-17        return answer
+2    def isValid(self, s: str) -> bool:
+3        stack = []
+4        brackets = {"}":"{", ")":"(", "]":"[" }
+5
+6        for i in s:
+7            if i in list(brackets.values()):
+8                stack.append(i)
+9
+10            elif i in list(brackets.keys()):
+11                if not stack:
+12                    return False
+13                
+14                if brackets[i]!=stack[-1]:
+15                    return False
+16                
+17                stack.pop(-1)
+18                
+19
+20        
+21        return len(stack)==0
